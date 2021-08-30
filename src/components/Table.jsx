@@ -15,6 +15,11 @@ function Table(){
             const response = await fetch("https://api.spacexdata.com/v4/launches");
             const data = await response.json();
 
+            if(data === null || data === undefined){
+                alert("No data was returned from Space X API.")
+            }
+
+
             //store data in our useState set.
             setShips(data);
             console.log(data);
@@ -63,7 +68,7 @@ function Table(){
 
      );*/
     return (
-        <div className="ag-theme-alpine" style={{height: 600, width: 1850}}>
+        <div className="ag-theme-alpine" style={{height: 600, width: 1600}}>
             <AgGridReact rowData={rowData} onRowClicked={callMe} pagination={true}>
                 <AgGridColumn maxWidth={150} resizable={true} field="Flight Number"></AgGridColumn>
                 <AgGridColumn maxWidth={150} resizable={true} field="Launch Date" sortable={true}></AgGridColumn>
